@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "/newpaid";//指定生成的go文件的包路径
+
+package newpaid;
+message AddMoneyRequest {
+  string grpc_token = 1;
+  int64 user_id = 2;
+  int64 amount = 3;
+}
+message AddMoneyResponse {
+  bool success = 1;
+  string message = 2;
+}
+message GetMoneyRequest {
+  string grpc_token = 1;
+  int64 user_id = 2;
+}
+message GetMoneyResponse {
+  int64 balance = 1;
+}
+
+service NewPaidService {
+  rpc AddMoney(AddMoneyRequest) returns (AddMoneyResponse);
+  rpc GetMoney(GetMoneyRequest) returns (GetMoneyResponse);
+}

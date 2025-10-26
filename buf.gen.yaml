@@ -1,0 +1,24 @@
+version: v2
+
+managed:
+  enabled: true
+  disable:
+    - file_option: go_package
+      module: buf.build/googleapis/googleapis
+  override:
+    - file_option: go_package_prefix
+      value: github.com/betterde/focusly/internal/gen
+
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: .
+    opt: paths=source_relative
+  - remote: buf.build/grpc/go
+    out: .
+    opt: paths=source_relative
+  - remote: buf.build/grpc-ecosystem/gateway
+    out: .
+    opt: paths=source_relative
+#  - remote: buf.build/connectrpc/go:v1.12.0
+#    out: internal/gen
+#    opt: paths=source_relative
