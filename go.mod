@@ -1,4 +1,4 @@
-module github.com/trancecho/mundo-proto-sdk
+module github.com/OfferCat-ai/proto
 
 go 1.24.2
 
