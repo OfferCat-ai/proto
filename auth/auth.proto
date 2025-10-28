@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "/auth";//指定生成的go文件的包路径
+
+package auth;
+message LoginRequest {
+  string grpc_token = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  string auth_token = 3;
+}
+
+message RegisterRequest {
+  string grpc_token = 1;
+  string username = 2;
+  string password = 3;
+  string email = 4;
+  string register_source = 5;
+  string phone_number = 6;
+}
+
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service AuthService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+}
