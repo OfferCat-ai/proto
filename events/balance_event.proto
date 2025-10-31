@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "/events";//指定生成的go文件的包路径
+
+package events;
+
+// 余额变更事件
+message BalanceChangeEvent {
+  int64 user_id = 1;          // 用户ID
+  string change_type = 2;     // 变更类型: "add", "deduct", "refund"
+  int64 amount = 3;            // 变更金额（分）
+  int64 balance = 4;            // 变更后余额（分）
+  string order_no = 5;         // 关联订单号（可选）
+  string reason = 6;           // 变更原因（可选）
+  int64 timestamp = 7;         // 时间戳（Unix 时间戳，毫秒）
+  string source_service = 8;   // 来源服务名称（谁发起的变动，如 "offercat", "container-distribution"）
+  string event_id = 9;          // 事件ID（UUID，用于去重和追踪）
+}
+
